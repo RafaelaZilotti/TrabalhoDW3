@@ -1,6 +1,6 @@
 // @file: src/features/genres/genre.routes.js
 
-import { pool } from "../../database/pool.js";
+import pool from "../../database/pool.js";
 
 import { GenreRepository } from "./genre.repository.js";
 import { GenreService } from "./genre.service.js";

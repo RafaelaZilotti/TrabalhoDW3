@@ -1,7 +1,7 @@
 // @file: src/features/games/game.repository.js
 
 export class GameRepository {
-    constructor(){
+    constructor(pool){
         this.pool = pool;
     }
 

@@ -2,7 +2,7 @@
 
 export class GenreRepository {
 
-    constructor(){
+    constructor(pool){
         this.pool = pool;
     }
 

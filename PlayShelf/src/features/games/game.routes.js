@@ -1,6 +1,6 @@
 // @file: src/features/games/game.routes.js
 
-import { pool } from "../../database/pool.js";
+import pool from "../../database/pool.js";
 
 import { GameRepository } from "./game.repository.js";
 import { GameService } from "./game.service.js";
