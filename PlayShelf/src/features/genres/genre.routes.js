@@ -1,5 +1,7 @@
 // @file: src/features/genres/genre.routes.js
 
+import { pool } from "../../database/pool.js";
+
 import { GenreRepository } from "./genre.repository.js";
 import { GenreService } from "./genre.service.js";
 import { GenreController } from "./genre.controller.js";
@@ -7,7 +9,7 @@ import { GenreController } from "./genre.controller.js";
 import { buscarTodosGenresSchema, buscarPorIdSchema, salvarGenreSchema, atualizarGenreSchema, removerGenreSchema} from "./genre.schemas.js";
 
 export async function genreRoutes(app){
-    const genreRepository = new GenreRepository();
+    const genreRepository = new GenreRepository(pool);
     const genreService = new GenreService(genreRepository);
     const genreController = new GenreController(genreService);
 

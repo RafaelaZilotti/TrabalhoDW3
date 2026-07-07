@@ -28,10 +28,7 @@ export class GenreController {
   async atualizar(request, reply) {
     const { id } = request.params;
 
-    const genre = await this.service.atualizar(
-      Number(id),
-      request.body
-    );
+    const genre = await this.service.atualizar(Number(id), request.body);
 
     return reply.status(200).send(genre);
   }

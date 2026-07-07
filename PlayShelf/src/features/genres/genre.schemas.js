@@ -1,209 +1,300 @@
 // @file: src/features/genres/genre.schemas.js
 
-// Schema reutilizável de um gênero.
+// Schema reutilizável de um gênero
 const genreSchema = {
-  type: "object",
-  properties: {
-    id: {
-      type: "integer",
-      example: 1,
-    },
-    name: {
-      type: "string",
-      example: "RPG",
-    },
-  },
+
+    type: "object",
+
+    required: [
+        "id",
+        "name"
+    ],
+
+    properties: {
+
+        id: {
+            type: "integer"
+        },
+
+        name: {
+            type: "string"
+        }
+    }
 };
+
 
 // GET /genres
 
 export const buscarTodosGenresSchema = {
-  schema: {
+
     tags: ["Genres"],
+
     summary: "Listar gêneros",
+
     description: "Retorna todos os gêneros cadastrados.",
 
+
     response: {
-      200: {
-        type: "array",
-        items: genreSchema,
-      },
-    },
-  },
+
+        200: {
+
+            type: "array",
+
+            items: genreSchema
+        }
+    }
 };
+
+
 
 // GET /genres/:id
 
 export const buscarPorIdSchema = {
-  schema: {
+
     tags: ["Genres"],
+
     summary: "Buscar gênero por ID",
+
     description: "Retorna um gênero específico.",
 
+
     params: {
-      type: "object",
-      required: ["id"],
-      properties: {
-        id: {
-          type: "integer",
-        },
-      },
+
+        type: "object",
+
+        required: [
+            "id"
+        ],
+
+        properties: {
+
+            id: {
+
+                type: "integer"
+            }
+        }
     },
+
 
     response: {
-      200: genreSchema,
 
-      404: {
-        type: "object",
-        properties: {
-          message: {
-            type: "string",
-            example: "Gênero não encontrado.",
-          },
-        },
-      },
-    },
-  },
+        200: genreSchema,
+
+
+        404: {
+
+            type: "object",
+
+            properties: {
+
+                message: {
+
+                    type: "string"
+                }
+            }
+        }
+    }
 };
+
+
 
 // POST /genres
 
 export const salvarGenreSchema = {
-  schema: {
+
     tags: ["Genres"],
+
     summary: "Criar gênero",
+
     description: "Cadastra um novo gênero.",
 
-    body: {
-      type: "object",
-      required: ["name"],
 
-      properties: {
-        name: {
-          type: "string",
-          example: "RPG",
-        },
-      },
+    body: {
+
+        type: "object",
+
+        required: [
+            "name"
+        ],
+
+        properties: {
+
+            name: {
+
+                type: "string"
+            }
+        }
     },
+
 
     response: {
-      201: genreSchema,
 
-      409: {
-        type: "object",
-        properties: {
-          message: {
-            type: "string",
-            example: "Já existe um gênero com esse nome.",
-          },
-        },
-      },
-    },
-  },
+        201: genreSchema,
+
+
+        409: {
+
+            type: "object",
+
+            properties: {
+
+                message: {
+
+                    type: "string"
+                }
+            }
+        }
+    }
 };
+
+
 
 // PATCH /genres/:id
 
 export const atualizarGenreSchema = {
-  schema: {
+
     tags: ["Genres"],
+
     summary: "Atualizar gênero",
+
     description: "Atualiza um gênero existente.",
 
-    params: {
-      type: "object",
-      required: ["id"],
 
-      properties: {
-        id: {
-          type: "integer",
-        },
-      },
+    params: {
+
+        type: "object",
+
+        required: [
+            "id"
+        ],
+
+        properties: {
+
+            id: {
+
+                type: "integer"
+            }
+        }
     },
+
 
     body: {
-      type: "object",
-      required: ["name"],
 
-      properties: {
-        name: {
-          type: "string",
-          example: "Aventura",
-        },
-      },
+        type: "object",
+
+        required: [
+            "name"
+        ],
+
+        properties: {
+
+            name: {
+
+                type: "string"
+            }
+        }
     },
+
 
     response: {
-      200: genreSchema,
 
-      404: {
-        type: "object",
-        properties: {
-          message: {
-            type: "string",
-            example: "Gênero não encontrado.",
-          },
-        },
-      },
+        200: genreSchema,
 
-      409: {
-        type: "object",
-        properties: {
-          message: {
-            type: "string",
-            example: "Já existe um gênero com esse nome.",
-          },
+
+        404: {
+
+            type: "object",
+
+            properties: {
+
+                message: {
+
+                    type: "string"
+                }
+            }
         },
-      },
-    },
-  },
+
+
+        409: {
+
+            type: "object",
+
+            properties: {
+
+                message: {
+
+                    type: "string"
+                }
+            }
+        }
+    }
 };
+
+
 
 // DELETE /genres/:id
 
 export const removerGenreSchema = {
-  schema: {
+
     tags: ["Genres"],
+
     summary: "Excluir gênero",
+
     description:
-      "Remove um gênero que não esteja vinculado a jogos.",
+        "Remove um gênero que não esteja vinculado a jogos.",
+
 
     params: {
-      type: "object",
-      required: ["id"],
 
-      properties: {
-        id: {
-          type: "integer",
-        },
-      },
+        type: "object",
+
+        required: [
+            "id"
+        ],
+
+        properties: {
+
+            id: {
+
+                type: "integer"
+            }
+        }
     },
+
 
     response: {
-      204: {
-        type: "null",
-      },
 
-      404: {
-        type: "object",
-        properties: {
-          message: {
-            type: "string",
-            example: "Gênero não encontrado.",
-          },
-        },
-      },
+        204: {
 
-      409: {
-        type: "object",
-        properties: {
-          message: {
-            type: "string",
-            example:
-              "Não é possível excluir um gênero vinculado a jogos.",
-          },
+            type: "null"
         },
-      },
-    },
-  },
+
+
+        404: {
+
+            type: "object",
+
+            properties: {
+
+                message: {
+
+                    type: "string"
+                }
+            }
+        },
+
+
+        409: {
+
+            type: "object",
+
+            properties: {
+
+                message: {
+
+                    type: "string"
+                }
+            }
+        }
+    }
 };

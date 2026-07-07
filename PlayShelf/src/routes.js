@@ -1,33 +1,13 @@
-// @file: routes.js
+// @file: src/routes.js
+
+import { genreRoutes } from './features/genres/genre.routes.js';
 
 export async function registerRoutes(app) {
 
-  app.get(
-    '/',
-    {
-      schema: {
-        tags: ['Home'],
-        summary: 'Verifica se a API está funcionando',
-        description: 'Endpoint utilizado para verificar o funcionamento da API.',
+  app.get("/", async() => {
+    return { message: "PlayShelf API funcionando!" };
+  })
 
-        response: {
-          200: {
-            type: 'object',
-            properties: {
-              message: {
-                type: 'string'
-              }
-            }
-          }
-        }
-      }
-    },
-
-    async () => {
-      return {
-        message: 'PlayShelf API'
-      }
-    }
-  )
+  await app.register(genreRoutes);
 
 }

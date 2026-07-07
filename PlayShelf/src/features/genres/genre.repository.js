@@ -1,8 +1,10 @@
 // @file: src/features/genres/genre.repository.js
 
-import { pool } from '../../database/pool.js';
-
 export class GenreRepository {
+
+    constructor(){
+        this.pool = pool;
+    }
 
     async buscarTodos() {
         const resultado = await pool.query('SELECT id, name FROM genres ORDER BY name;');

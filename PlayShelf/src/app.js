@@ -1,4 +1,4 @@
-// @file: app.js
+// @file: src/app.js
 
 import Fastify from 'fastify'
 import { registerSwagger } from './config/swagger.js'
