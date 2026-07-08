@@ -5,16 +5,16 @@ import { AppError } from "../../errors/AppError.js";
 
 export class GameService {
     constructor(gameRepository, genreRepository) {
-        this.gameRepository = gameRepository;
+        this.repository = gameRepository;
         this.genreRepository = genreRepository;
     }
 
     async buscarTodos(){
-        return await this.gameRepository.buscarTodos();
+        return await this.repository.buscarTodos();
     }
 
     async buscarPorId(id){
-        const game =await this.gameRepository.buscarPorId(id);
+        const game =await this.repository.buscarPorId(id);
 
         if(!game){
             throw new AppError("Jogo não encontrado", 404);
@@ -28,12 +28,12 @@ export class GameService {
         if(!genre){
             throw new AppError("Gênero não encontrado", 404);
         }
-        return await this.gameRepository.salvar(game);
+        return await this.repository.salvar(game);
 
     }
 
     async atualizar(id, dadosGame){
-        const game = await this.gameRepository.buscarPorId(id);
+        const game = await this.repository.buscarPorId(id);
         if(!game){
             throw new AppError("Jogo não encontrado", 404);
         }
@@ -42,17 +42,17 @@ export class GameService {
         if(!genre){
             throw new AppError("Gênero não encontrado", 404);
         }
-        return await this.gameRepository.atualizar(id, dadosGame);
+        return await this.repository.atualizar(id, dadosGame);
 
     }
 
     async remover(id){
-        const game = await this.gameRepository.buscarPorId(id);
+        const game = await this.repository.buscarPorId(id);
 
         if(!game){
             throw new AppError("Jogo não encontrado", 404);
         }
-        return await this.gameRepository.remover(id);
+        return await this.repository.remover(id);
 
     }
 

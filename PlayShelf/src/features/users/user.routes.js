@@ -17,7 +17,7 @@ export async function userRoutes(app) {
     app.get("/users/:id",{schema: buscarUsuarioPorIdSchema},userController.buscarPorId.bind(userController));
     app.get("/users/email/:email",{schema: buscarUsuarioPorEmailSchema},userController.buscarPorEmail.bind(userController));
     app.post("/users",{schema: salvarUsuarioSchema},userController.salvar.bind(userController));
-    app.put("/users/:id",{schema: atualizarUsuarioSchema},userController.atualizar.bind(userController));
+    app.patch("/users/:id",{schema: atualizarUsuarioSchema},userController.atualizar.bind(userController));
     app.delete("/users/:id",{schema: removerUsuarioSchema},userController.remover.bind(userController));
 
 }

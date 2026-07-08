@@ -114,7 +114,7 @@ export const salvarUsuarioSchema = {
     }
 };
 
-// PUT /users/:id
+// PATCH /users/:id
 
 export const atualizarUsuarioSchema = {
     tags: ["Users"],
